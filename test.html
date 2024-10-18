@@ -48,14 +48,26 @@
       padding-left: 0;
     }
 
-
+    table {
+      border-collapse: collapse;
+      width: 90vw;
+      border: 1.5px solid #3a607c;
+    }
 
     .job-info-heading {
       background-color: #ded7d2;
     }
 
-    .first-row>td {
+    tr:nth-child(2)>td {
       padding-top: 8px;
+    }
+
+    tr:last-child>td {
+      padding-bottom: 8px;
+    }
+
+    td:nth-child(odd) {
+      width: 80px;
     }
   </style>
 </head>
@@ -86,13 +98,13 @@
 
 
   <section>
-    <table style="border-collapse: collapse; width: 90vw; border: 2px solid #3a607c;">
+    <table>
       <tr>
         <th colspan="4" style="background-color: #3a607c; color: #f2f2f2; text-align: center;">
           DOCUMENT INFORMATION
         </th>
       </tr>
-      <tr class="first-row">
+      <tr>
         <td class="table-information-header">DOCUMENT ID:</td>
         <td class="information"></td>
         <td class="table-information-header">OPERATOR:</td>
@@ -119,13 +131,13 @@
 
 
   <section>
-    <table style="border-collapse: collapse; width: 90vw; border: 2px solid #3a607c;">
+    <table>
       <tr>
         <th colspan="4" style="background-color: #3a607c; color: #f2f2f2; text-align: center;">
           SYSTEM HARDWARE INFORMATION
         </th>
       </tr>
-      <tr class="first-row">
+      <tr>
         <td class="table-information-header">MANUFACTURER:</td>
         <td class="information">AVITA</td>
         <td class="table-information-header">SERIAL NUMBER:</td>
@@ -299,7 +311,7 @@
 
 
   <section>
-    <table style="border-collapse: collapse; width: 90vw; border: 2px solid #3a607c;">
+    <table>
       <tr>
         <th colspan="4" style="background-color: #3a607c; color: #f2f2f2; text-align: center;">
           # JOB INFORMATION
@@ -524,7 +536,7 @@
 
 
   <section style="font-size: 10px;">
-    <div style="padding: 95px;"></div>
+    <div style="padding: 50px;"></div>
     <span style="margin-bottom: 10px; font-size: 11px; color: #555;">We hereby certify that on the above-described data
       storage devices
       has
