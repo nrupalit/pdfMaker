@@ -1,27 +1,26 @@
-const fs = require('fs');
-const puppeteer = require('puppeteer');
+const express = require('express');
+const app = express();
+const cors = require('cors')
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb' }));
+app.use(cors())
+const { run } = require("./pdfGenerator")
 
-async function run() {
-    let html = fs.readFileSync('./test.html', 'utf8');
-    let browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
 
-    const pdfOptions = {
-        path: './index.pdf',
-        format: 'A4',
-        printBackground: true,
-        // Optionally set dimensions if needed
-        width: '210mm',
-        height: '297mm',
 
-    };
 
-    let page = await browser.newPage();
-    await page.setContent(html);
-    await page.pdf(pdfOptions);
-    await browser.close();
-}
+app.post('/generatePdf', async (req, res) => {
+    try {
+        await run(req.body.data, req.body.id);
+        res.status(200).json({ status: true })
+    } catch (error) {
+        res.status(500).json({ status: false })
+    }
 
-run();
+});
+
+
+app.listen(3000, () => {
+    console.log("Server started..");
+
+})
